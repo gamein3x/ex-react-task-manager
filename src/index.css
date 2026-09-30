@@ -1,0 +1,11 @@
+.todo {
+  background-color: red;
+}
+
+.doing {
+  background-color: yellow;
+}
+
+.done {
+  background-color: greenyellow;
+}
