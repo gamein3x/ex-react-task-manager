@@ -1,0 +1,14 @@
+.header-main {
+  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.test-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
