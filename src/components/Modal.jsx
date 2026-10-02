@@ -7,7 +7,7 @@ export default function Modal({title, content, show, onClose, onConfirm, confirm
         <div className="modal-overlay">
             <div className="modal">
                 <h2>{title}</h2>
-                <p>{content}</p>
+                {content}
                 <div className="modal-actions">
                     <button onClick={onClose}>Annulla</button>
                     <button onClick={onConfirm}>{confirmText}</button>
