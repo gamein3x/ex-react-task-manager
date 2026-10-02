@@ -30,7 +30,7 @@ export default function useTasks() {
     };
 
     const removeTask = async taskId => {
-        const response = await fetch(`${VITE_API_URL}/tasks/task/${taskId}`, {
+        const response = await fetch(`${VITE_API_URL}/tasks/${taskId}`, {
             method: "DELETE"
         })
 
