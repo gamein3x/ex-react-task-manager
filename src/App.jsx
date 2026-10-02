@@ -1,9 +1,12 @@
 import './App.css'
 import { Routes, Route, NavLink } from 'react-router-dom'
+
 import HomePage from './Pages/HomePage.jsx'
 import TaskList from './Pages/TaskList.jsx'
 import AddTask from './Pages/AddTask.jsx'
 import NotFoundPage from './Pages/NotFoundPage.jsx'
+import TaskDetail from "./Pages/TaskDetail";
+
 import { GlobalProvider } from './context/GlobalContext.jsx'
 
 function App() {
@@ -19,6 +22,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/tasks" element={<TaskList />} />
         <Route path="/add-task" element={<AddTask />} />
+        <Route path="/tasks/task/:id" element={<TaskDetail />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </GlobalProvider>
