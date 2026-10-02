@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"
-import { useState, useRef } from "react"
+import { Link } from "react-router-dom";
+import { useState, useRef, useMemo } from "react";
+
+const symbols = "!@#$%^&*()-_£=+[]{}|;:'\\\",.<>?/`~";
 
 export default function AddTask() {
 
@@ -7,16 +9,44 @@ export default function AddTask() {
     const descriptionRef = useRef();
     const statusRef = useRef();
 
+    const taskNameError = useMemo(() => {
+        if (!taskTitle.trim()) {
+            return "Il nome della task non può essere vuoto"
+        }
+        if ([...taskTitle].some(char => symbols.includes(char))){
+            return "Il nome della task non può contenere simboli"
+        }
+        return "";
+    }, [taskTitle]);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (taskNameError) {
+            return;
+        }
+
+        const newTask = {
+            title: taskTitle.trim(),
+            description: descriptionRef.current.value,
+            status: statusRef.current.value
+        }
+
+        console.log(newTask);
+    }
+
+
     return <>
         <h1>AddTask Page</h1>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <label>
                 Nome task: 
                 <input 
                 type="text"
                 value={taskTitle}
                 onChange={e => setTaskTitle(e.target.value)} />
+                {taskNameError && 
+                <p>{taskNameError}</p>}
             </label>
             <label>
                 Descrizione: 
@@ -30,6 +60,7 @@ export default function AddTask() {
                     })}
                 </select>
             </label>
+            <button type="submit" disabled={taskNameError}>Aggiungi task</button>
         </form>
 
         <Link to={"/"}>
