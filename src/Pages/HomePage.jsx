@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ToDoList from "../components/ToDoList.jsx";
 
 export default function HomePage() {
     return <>
@@ -8,5 +9,7 @@ export default function HomePage() {
                 <h3>Work in progress</h3>
             </div>
         </header>
+
+        <ToDoList />
     </>
 };
